@@ -1,0 +1,226 @@
+
+#fxc-dock {
+  position: fixed;
+  left: 75px;
+  top: 65px;
+  z-index: 105;
+  display: flex;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+#fxc-dock button,
+.fxc button {
+  background: #343d51;
+  color: #f5ecd9;
+  border: 1px solid #9e8151;
+  border-radius: 5px;
+  padding: 5px 9px;
+  cursor: pointer;
+  font: inherit;
+}
+
+#fxc-dock button:hover,
+.fxc button:hover {
+  background: #625137;
+}
+
+.fxc {
+  position: fixed;
+  z-index: 104;
+  box-sizing: border-box;
+  background: #1c222d;
+  color: #f1ecdf;
+  border: 2px solid #a68a59;
+  border-radius: 10px;
+  box-shadow: 0 10px 28px #0009;
+  font: 13px/1.4 Arial, sans-serif;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+.fxc * {
+  box-sizing: border-box;
+}
+
+.fxc-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: #343e51;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.fxc-head strong {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 16px;
+}
+
+.fxc-head button {
+  padding: 2px 7px;
+  cursor: pointer;
+}
+
+.fxc-body {
+  padding: 10px;
+  height: calc(100% - 43px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.fxc-flex {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.fxc-portrait {
+  width: 33%;
+  max-height: 170px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border: 1px solid #9e8151;
+  border-radius: 5px;
+}
+
+.fxc-grow {
+  flex: 1;
+  min-width: 0;
+}
+
+.fxc-section {
+  font-weight: 700;
+  color: #e7c78b;
+  border-bottom: 1px solid #695739;
+  margin: 9px 0 5px;
+  padding-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+
+.fxc-edit {
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.fxc-edit:hover {
+  background: #3b4558;
+}
+
+.fxc-muted {
+  opacity: .72;
+  font-style: italic;
+}
+
+.fxc-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.fxc-consequence {
+  display: flex;
+  align-items: start;
+  gap: 6px;
+  border-bottom: 1px solid #404958;
+  padding: 4px 0;
+}
+
+.fxc-consequence .fxc-grow {
+  min-width: 0;
+}
+
+.fxc-name {
+  color: #e7c78b;
+}
+
+.fxc-stress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 4px 0 7px;
+}
+
+.fxc button.fxc-used {
+  background: #9d4141;
+}
+
+.fxc-grip {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 19px;
+  width: 19px;
+  cursor: nwse-resize;
+  touch-action: none;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    #aa9269 51%
+  );
+}
+
+.fxc-guide {
+  right: 18px;
+  top: 70px;
+  width: min(510px, calc(100vw - 105px));
+  height: min(640px, calc(100vh - 110px));
+  z-index: 120;
+}
+
+.fxc-guide .fxc-body {
+  height: calc(100% - 46px);
+}
+
+.fxc-guide select,
+.fxc-guide input,
+.fxc-guide textarea {
+  background: #121823;
+  color: #eee;
+  border: 1px solid #8d7b5d;
+  border-radius: 4px;
+  padding: 6px;
+  width: 100%;
+  font: inherit;
+}
+
+.fxc-guide label {
+  display: block;
+  margin: 7px 0 3px;
+  color: #e7c78b;
+}
+
+.fxc-guide nav {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.fxc-guide nav button[aria-pressed="true"] {
+  background: #80613a;
+}
+
+.fxc-panel {
+  padding: 9px;
+  background: #252d3a;
+  border: 1px solid #485161;
+  border-radius: 6px;
+  margin: 8px 0;
+  white-space: pre-wrap;
+}
+
+.fxc-small {
+  font-size: 12px;
+  opacity: .85;
+}

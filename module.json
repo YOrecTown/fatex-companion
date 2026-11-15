@@ -1,0 +1,18 @@
+
+{
+  "id": "fatex-companion",
+  "title": "FateX Companion",
+  "description": "Shared scene cards and Fate Accelerated quick reference (Russian)",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Community prototype"
+    }
+  ],
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
+  "esmodules": ["companion.js"],
+  "styles": ["companion.css"]
+}
