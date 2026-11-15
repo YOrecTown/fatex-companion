@@ -1,0 +1,63 @@
+
+name: Сборка FateX Companion
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Получение файлов
+        uses: actions/checkout@v4
+
+      - name: Подготовка манифеста
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
+
+          const file = "module.json";
+          const data = JSON.parse(
+            fs.readFileSync(file, "utf8")
+          );
+
+          const tag = process.env.RELEASE_TAG;
+          const repo = process.env.REPOSITORY;
+          const version = tag.replace(/^v/, "");
+
+          data.version = version;
+          data.url = `https://github.com/${repo}`;
+          data.manifest =
+            `https://github.com/${repo}/releases/latest/download/module.json`;
+          data.download =
+            `https://github.com/${repo}/releases/download/${tag}/module.zip`;
+
+          fs.writeFileSync(
+            file,
+            JSON.stringify(data, null, 2)
+          );
+          NODE
+
+      - name: Упаковка модуля
+        run: |
+          zip -j module.zip \
+            module.json \
+            companion.js \
+            companion.css
+
+      - name: Публикация файлов
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload \
+            "${{ github.event.release.tag_name }}" \
+            module.json module.zip \
+            --clobber
